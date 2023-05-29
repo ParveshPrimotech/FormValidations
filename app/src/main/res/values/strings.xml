@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    /**
+    *************************************************
+    Form validation Strings
+    *************************************************
+    **/
+    <string name="form_invalid_entry">Please enter a valid %1$s</string>
+    <string name="form_name_invalid_min_length">%1$s length should be greater or equal 2</string>
+    <string name="form_name_invalid_max_length">%1$s length should be less or equal 30</string>
+    <string name="form_password_invalid_min_length">%1$s length should be greater or equal 8</string>
+    <string name="form_password_invalid_max_length">%1$s length should be less or equal 20</string>
+    <string name="form_null_or_empty_value">%1$s can\'t be empty</string>
+
+
+    /**
+    *************************************************
+    App Strings
+    *************************************************
+    **/
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+
+</resources>
