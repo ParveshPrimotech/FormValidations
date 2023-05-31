@@ -7,11 +7,11 @@
     *************************************************
     **/
     <string name="form_invalid_entry">Please enter a valid %1$s</string>
-    <string name="form_name_invalid_min_length">%1$s length should be greater or equal 2</string>
-    <string name="form_name_invalid_max_length">%1$s length should be less or equal 30</string>
-    <string name="form_password_invalid_min_length">%1$s length should be greater or equal 8</string>
-    <string name="form_password_invalid_max_length">%1$s length should be less or equal 20</string>
-    <string name="form_null_or_empty_value">%1$s can\'t be empty</string>
+    <string name="form_entry_can_not_contain_space">%1$s can\'t contain spaces</string>
+    <string name="form_field_invalid_min_length">%1$s length should be greater or equal %2$d</string>
+    <string name="form_field_invalid_max_length">%1$s length should be less or equal %2$d</string>
+    <string name="form_confirm_password_not_matching">%1$s not matching with %2$s</string>
+    <string name="form_entry_null_or_empty_value">%1$s can\'t be empty</string>
 
 
     /**
@@ -19,8 +19,11 @@
     App Strings
     *************************************************
     **/
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
 
 
 </resources>

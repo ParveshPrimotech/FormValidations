@@ -1,5 +1,6 @@
 package com.example.myapplication.core.di
 
+import com.example.myapplication.domain.use_case.ConfirmPasswordValidationUC
 import com.example.myapplication.domain.use_case.EmailValidationUC
 import com.example.myapplication.domain.use_case.NameValidationUC
 import com.example.myapplication.domain.use_case.PasswordValidationUC
@@ -21,4 +22,7 @@ class ViewModelModule {
 
     @Provides
     fun providePasswordValidationUC() : PasswordValidationUC = PasswordValidationUC()
+
+    @Provides
+    fun provideConfirmPasswordValidationUC() : ConfirmPasswordValidationUC = ConfirmPasswordValidationUC()
 }

@@ -1,28 +1,28 @@
 package com.example.myapplication.domain.use_case
 
-import com.example.myapplication.R
 import com.example.myapplication.core.utils.PasswordStrength
 import com.example.myapplication.core.utils.PasswordValidationResult
-import com.example.myapplication.core.utils.UiText
+import com.example.myapplication.core.utils.ValidationMessage
 
 class PasswordValidationUC {
 
-    /**
-     * In case of change in these values please make
-     * appropriate changes in related error message strings
-     * written below
-     */
     private val minLength: Int = 8
     private val maxLength: Int = 20
 
-    operator fun invoke(enteredText: String): PasswordValidationResult {
+    operator fun invoke(enteredText: String?): PasswordValidationResult {
 
         return when{
+            enteredText.isNullOrEmpty() -> {
+                PasswordValidationResult(false,ValidationMessage.NullOrEmptyValue)
+            }
+            enteredText.contains(" ") -> {
+                PasswordValidationResult(false, ValidationMessage.CanNotContainSpace)
+            }
             enteredText.length < minLength ->{
-                PasswordValidationResult(false, UiText.StringResource(R.string.form_password_invalid_min_length))
+                PasswordValidationResult(false, ValidationMessage.InvalidMinLength(minLength))
             }
             enteredText.length > maxLength ->{
-                PasswordValidationResult(false, UiText.StringResource(R.string.form_password_invalid_max_length))
+                PasswordValidationResult(false, ValidationMessage.InvalidMaxLength(maxLength))
             }
             else -> {
                 var result = PasswordValidationResult(true)

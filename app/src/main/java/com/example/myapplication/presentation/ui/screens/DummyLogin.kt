@@ -1,6 +1,8 @@
 package com.example.myapplication.presentation.ui.screens
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
@@ -14,7 +16,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.myapplication.R
-import com.example.myapplication.core.utils.asString
+import com.example.myapplication.presentation.sealed_class.screen_event.LoginScreenEvents
+import com.example.myapplication.presentation.ui.composables.asString
 import com.example.myapplication.presentation.view_model.LoginScreenVM
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -25,9 +28,13 @@ fun DummyLogin(
 ) {
 
     val screenState by viewModel.screenState.collectAsState()
+    val isBtnEnable by viewModel.isBtnEnable.collectAsState()
 
     Box(
         modifier = modifier
+            .verticalScroll(
+                state = rememberScrollState()
+            )
             .padding(10.dp),
         contentAlignment = Alignment.Center
     ){
@@ -40,12 +47,12 @@ fun DummyLogin(
                 isError = true,
                 value = screenState.email,
                 supportingText = {
-                    screenState.emailValidation?.let {
-                        Text(text = it.asString(stringResource(id = R.string.email)))
+                    screenState.emailValidation?.message?.let {
+                        Text(text = it.asString(fieldNameRedId = R.string.email))
                     }
                 },
                 onValueChange = {
-                    viewModel.onEmailChanged(it)
+                    viewModel.screenEvent(LoginScreenEvents.EmailChanged(it))
                 }
             )
 
@@ -60,11 +67,13 @@ fun DummyLogin(
                 value = screenState.password,
                 supportingText = {
                     screenState.passwordValidation?.let {
-                        Text(text = it.asString(stringResource(id = R.string.password)))
+                        it.message?.let { message ->
+                            Text(text = message.asString(fieldNameRedId = R.string.password))
+                        }
                     }
                 },
                 onValueChange = {
-                    viewModel.onPasswordChanged(it)
+                    viewModel.screenEvent(LoginScreenEvents.PasswordChanged(it))
                 }
             )
 
@@ -72,7 +81,10 @@ fun DummyLogin(
 
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = viewModel::onBtnLoginPressed
+                onClick = {
+                    viewModel.screenEvent(LoginScreenEvents.LoginBtnPressed)
+                },
+                enabled = isBtnEnable
             ) {
                 Text(text = "Submit")
             }

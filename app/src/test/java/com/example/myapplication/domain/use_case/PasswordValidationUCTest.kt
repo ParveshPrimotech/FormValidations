@@ -15,7 +15,9 @@ class PasswordValidationUCTest {
         passwordValidationUC = PasswordValidationUC()
     }
 
-    //InValid Passwords Test
+   /**
+   * InValid Passwords Test Cases
+   **/
     @Test
     fun `test if password empty`(){
         val password = ""
@@ -37,7 +39,30 @@ class PasswordValidationUCTest {
         assertEquals(result.status, false)
     }
 
-    //Valid Passwords Test
+    @Test
+    fun `test if password is contain spaces in the start & less chars`(){
+        val password = " abcdefg"
+        val result = passwordValidationUC(password)
+        assertEquals(result.status, false)
+    }
+
+    @Test
+    fun `test if password is contain spaces in the end & less chars`(){
+        val password = "abcdefg "
+        val result = passwordValidationUC(password)
+        assertEquals(result.status, false)
+    }
+
+    @Test
+    fun `test if password is complete spaces`(){
+        val password = "         "
+        val result = passwordValidationUC(password)
+        assertEquals(result.status, false)
+    }
+
+    /**
+     * InValid Passwords Test Cases
+     **/
     @Test
     fun `test if password length is valid but password strength is weak`(){
         val password = "abcdcdefg"
