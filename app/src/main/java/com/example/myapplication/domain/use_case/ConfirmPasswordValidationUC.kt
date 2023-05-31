@@ -11,7 +11,6 @@ class ConfirmPasswordValidationUC {
      * password : Password to match entered confirm password
     **/
     operator fun invoke(enteredText: String?, password:String?): ConfirmPasswordValidationResult {
-
         return when{
             enteredText.isNullOrEmpty() -> {
                 ConfirmPasswordValidationResult(false, ConfirmPasswordValidationMessage.NullOrEmptyValue)
