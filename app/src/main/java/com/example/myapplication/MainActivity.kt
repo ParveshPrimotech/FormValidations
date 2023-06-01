@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.myapplication.presentation.ui.screens.DummyContactUs
 import com.example.myapplication.presentation.ui.screens.DummySignup
 import com.example.myapplication.presentation.ui.theme.MyApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 // A surface container using the 'background' color from the theme
-                DummySignup(modifier = Modifier.fillMaxSize())
+                DummyContactUs(modifier = Modifier.fillMaxSize())
             }
         }
     }

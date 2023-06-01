@@ -4,6 +4,8 @@ import com.example.myapplication.domain.use_case.ConfirmPasswordValidationUC
 import com.example.myapplication.domain.use_case.EmailValidationUC
 import com.example.myapplication.domain.use_case.NameValidationUC
 import com.example.myapplication.domain.use_case.PasswordValidationUC
+import com.example.myapplication.domain.use_case.PhoneValidationUC
+import com.example.myapplication.domain.use_case.UserNameValidationUC
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,4 +27,10 @@ class ViewModelModule {
 
     @Provides
     fun provideConfirmPasswordValidationUC() : ConfirmPasswordValidationUC = ConfirmPasswordValidationUC()
+
+    @Provides
+    fun providePhoneValidationUC() : PhoneValidationUC = PhoneValidationUC()
+
+    @Provides
+    fun providesUserNameValidationUC() : UserNameValidationUC = UserNameValidationUC()
 }
