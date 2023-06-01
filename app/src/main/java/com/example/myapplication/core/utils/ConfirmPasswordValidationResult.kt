@@ -25,7 +25,7 @@ sealed class ConfirmPasswordValidationMessage{
     object PasswordMismatch:ConfirmPasswordValidationMessage(){
         @Composable
         fun asString(fieldName: String, passwordFieldName:String): String {
-            return stringResource(id = R.string.form_field_invalid_max_length, fieldName, passwordFieldName)
+            return stringResource(id = R.string.form_confirm_password_not_matching, fieldName, passwordFieldName)
         }
     }
 }
