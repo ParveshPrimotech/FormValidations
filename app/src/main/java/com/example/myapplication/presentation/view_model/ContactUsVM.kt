@@ -27,11 +27,12 @@ class ContactUsVM @Inject constructor(
     private val _isBtnEnable = MutableStateFlow(false)
     val isBtnEnable = _isBtnEnable.asStateFlow()
 
-
     init {
         _screenState.onEach {
             _isBtnEnable.value = it.firstNameValidation?.status == true
                     && it.lastNameValidation?.status == true
+                    && it.phoneValidation?.status == true
+                    && it.userNameValidation?.status == true
         }.launchIn(viewModelScope)
     }
 
